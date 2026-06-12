@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio A1 - Année 1 L'Éveil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+        }
+
+        .header .subtitle {
+            font-size: 0.95em;
+            opacity: 0.85;
+            font-style: italic;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .contexte {
+            background: #f0f4ff;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 5px;
+        }
+
+        .contexte h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .domaine {
+            margin-bottom: 60px;
+        }
+
+        .domaine-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .domaine-header h2 {
+            font-size: 1.8em;
+            margin: 0;
+        }
+
+        .domaine-icon {
+            font-size: 2.5em;
+            min-width: 60px;
+        }
+
+        .domaine:nth-child(1) .domaine-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .domaine:nth-child(2) .domaine-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .domaine:nth-child(3) .domaine-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .questions {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .questions h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .questions ol {
+            padding-left: 25px;
+        }
+
+        .questions li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .niveau {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fafafa;
+            transition: all 0.3s ease;
+        }
+
+        .niveau:hover {
+            border-color: #667eea;
+            background: #f5f7ff;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        .niveau-titre {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .niveau-numero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            flex-shrink: 0;
+        }
+
+        .domaine:nth-child(2) .niveau-numero {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .domaine:nth-child(3) .niveau-numero {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .niveau h4 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .niveau-subtitle {
+            color: #666;
+            font-size: 0.95em;
+            font-style: italic;
+            margin-bottom: 15px;
+            padding-left: 47px;
+        }
+
+        .niveau-definition {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border-left: 3px solid #667eea;
+        }
+
+        .domaine:nth-child(2) .niveau-definition {
+            border-left-color: #f5576c;
+        }
+
+        .domaine:nth-child(3) .niveau-definition {
+            border-left-color: #00f2fe;
+        }
+
+        .niveau-definition strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .domaine:nth-child(2) .niveau-definition strong {
+            color: #f5576c;
+        }
+
+        .domaine:nth-child(3) .niveau-definition strong {
+            color: #00f2fe;
+        }
+
+        .indicateurs {
+            margin-bottom: 15px;
+        }
+
+        .indicateurs h5 {
+            color: #667eea;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .domaine:nth-child(2) .indicateurs h5 {
+            color: #f5576c;
+        }
+
+        .domaine:nth-child(3) .indicateurs h5 {
+            color: #00f2fe;
+        }
+
+        .indicateurs ul {
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .indicateurs li {
+            margin-bottom: 6px;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .indicateurs li:before {
+            content: "✓ ";
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .indicateurs li.non:before {
+            content: "✗ ";
+            color: #f44336;
+        }
+
+        .exemple {
+            background: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        .exemple strong {
+            color: #ffa500;
+            display: block;
+            margin-bottom: 5px;
+            font-style: normal;
+        }
+
+        .curseur {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 10px 15px;
+            margin-top: 15px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            font-weight: 500;
+            color: #2e7d32;
+        }
+
+        .footer {
+            background: #f5f5f5;
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 2px solid #e0e0e0;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .niveau {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px;
+            }
+            .header {
+                padding: 40px 20px;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+            .domaine-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌱 PORTFOLIO A1</h1>
+            <p>L'ÉVEIL — Observation et Théorie</p>
+            <p class="subtitle">Votre guide pour explorer et documenter votre transformation</p>
+        </div>
+
+        <div class="content">
+            <div class="contexte">
+                <h3>📍 CONTEXTE DE CETTE ANNÉE</h3>
+                <p>Aucune clinique active. Cours magistraux, travaux pratiques entre pairs, observation passive.</p>
+                <p style="margin-top: 10px; color: #667eea;"><strong>Cette année est fondatrice :</strong> vous découvrez comment VOUS apprenez, comment vos émotions affectent votre perception, et comment votre vision du métier se construit progressivement.</p>
+            </div>
+
+            <!-- DOMAINE 1 -->
+            <div class="domaine">
+                <div class="domaine-header">
+                    <div class="domaine-icon">🧠</div>
+                    <h2>Domaine 1 : Méthodes d'apprentissage et Raisonnement</h2>
+                </div>
+
+                <div class="questions">
+                    <h4>❓ Questions de guidage</h4>
+                    <ol>
+                        <li>Quel événement précis (un cours théorique complexe, une évaluation, un TP) t'a posé une difficulté majeure de compréhension ou de mémorisation cette année ?</li>
+                        <li>Comment as-tu réagi initialement face à cette difficulté avec tes méthodes de travail habituelles ?</li>
+                        <li>Avec le recul, pourquoi cette méthode de travail classique n'était-elle plus suffisante face à la complexité des sciences médicales ?</li>
+                        <li>Quelle nouvelle stratégie (schématisation, travail de groupe, liens cliniques) as-tu mise en place pour surmonter cet obstacle ?</li>
+                        <li>En quoi cette adaptation change-t-elle ta façon d'aborder la suite de tes études ?</li>
+                    </ol>
+                </div>
+
+                <!-- NIVEAU 1 -->
+                <div class="niveau">
+                    <div class="niveau-titre">
+                        <div class="niveau-numero">1</div>
+                        <h4>RÉCIT DESCRIPTIF</h4>
+                    </div>
+                    <div class="niveau-subtitle">Vous restez à la surface : vous racontez ce qui s'est passé, sans vraiment analyser.</div>
+                    
+                    <div class="niveau-definition">
+                        <strong>Définition</strong>
+                        Vous décrivez l'événement (cours, TP, évaluation) et votre réaction initiale, mais sans explorer les raisons profondes du changement ou l'impact réel sur votre apprentissage.
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✓ Vous êtes à ce niveau si :</h5>
+                        <ul>
+                            <li>Vous nommez l'événement qui vous a posé problème ("J'ai eu du mal en anatomie")</li>
+                            <li>Vous décrivez votre méthode habituelle ("Je lisais et je relisais")</li>
+                            <li>Vous mentionnez une nouvelle stratégie ("J'ai commencé à faire des schémas")</li>
+                        </ul>
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✗ Ce qui manque :</h5>
+                        <ul class="non">
+                            <li>Vous ne cherchez pas à comprendre POURQUOI la vieille méthode ne marchait plus</li>
+                            <li>Vous ne mesurez pas le changement réel ("Est-ce que ça a vraiment marché ?")</li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple">
+                        <strong>📌 Exemple</strong>
+                        "J'avais des difficultés en anatomie. Je relisais mes cours mais je ne comprenais pas. J'ai décidé de faire des schémas. Maintenant je fais des schémas."
+                    </div>
+
+                    <div class="curseur">
+                        ➜ Vous êtes à ce niveau si vous racontez l'histoire mais sans analyse ni transformation visible.
+                    </div>
+                </div>
+
+                <!-- NIVEAU 2 -->
+                <div class="niveau">
+                    <div class="niveau-titre">
+                        <div class="niveau-numero">2</div>
+                        <h4>CONSTAT / BILAN</h4>
+                    </div>
+                    <div class="niveau-subtitle">Vous prenez du recul : vous observez le changement et vous en mesurez l'impact.</div>
+                    
+                    <div class="niveau-definition">
+                        <strong>Définition</strong>
+                        Vous ne racontez plus juste l'histoire—vous la regardez de l'extérieur. Vous identifiez ce qui a changé (avant/après), vous mesurez les résultats, vous commencez à comprendre pourquoi ça a fonctionné.
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✓ Vous êtes à ce niveau si :</h5>
+                        <ul>
+                            <li>Vous comparez explicitement avant/après ("Avant, je mettais 2h pour apprendre une région. Maintenant, 30 min")</li>
+                            <li>Vous identifiez les raisons du blocage initial ("Ma méthode était trop passive")</li>
+                            <li>Vous reconnaissez que l'ancienne stratégie n'était pas adaptée à la complexité</li>
+                            <li>Vous mesurez les résultats concrets ("J'ai mieux réussi l'éval", "Je suis moins stressé(e)")</li>
+                        </ul>
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✗ Ce qui manque :</h5>
+                        <ul class="non">
+                            <li>Vous ne relient pas encore ce changement à votre IDENTITÉ de praticien</li>
+                            <li>Vous ne projettez pas vraiment l'impact sur vos études futures</li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple">
+                        <strong>📌 Exemple</strong>
+                        "Avant, j'étudiais seul(e) en relisant. Cela ne suffisait pas pour l'anatomie—je ne visualisais pas les structures en 3D. J'ai découvert que j'apprenais mieux en expliquant à un camarade. Maintenant, mes résultats en anatomie se sont améliorés et je me sens moins paniqué(e) en TP."
+                    </div>
+
+                    <div class="curseur">
+                        ➜ Vous êtes à ce niveau si vous avez une bonne conscience du changement, vous le mesurez, mais vous ne l'explorez pas en profondeur.
+                    </div>
+                </div>
+
+                <!-- NIVEAU 3 -->
+                <div class="niveau">
+                    <div class="niveau-titre">
+                        <div class="niveau-numero">3</div>
+                        <h4>ANALYSE TRANSFORMATRICE</h4>
+                    </div>
+                    <div class="niveau-subtitle">Vous creusez : vous comprenez comment le changement vous a transformé(e) intérieurement.</div>
+                    
+                    <div class="niveau-definition">
+                        <strong>Définition</strong>
+                        Vous ne mesurez plus juste le résultat—vous explorez ce que cette expérience a révélé sur VOUS : vos croyances, vos limites, votre façon de penser. Vous comprenez que ce n'était pas juste "changer de méthode", c'était "changer votre rapport à l'apprentissage".
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✓ Vous êtes à ce niveau si :</h5>
+                        <ul>
+                            <li>Vous identifiez vos croyances initiales ("Je pensais qu'être intelligent = bien mémoriser")</li>
+                            <li>Vous voyez comment la difficulté a déstabilisé ces croyances</li>
+                            <li>Vous explorez vos émotions face au changement ("J'ai eu honte d'avoir besoin d'expliquer plutôt que de lire seul")</li>
+                            <li>Vous reliez le changement de méthode à une transformation identitaire ("J'ai découvert que j'apprenais différemment, et ça m'a libéré")</li>
+                            <li>Vous commencez à voir l'impact sur votre futur ("Je sais maintenant comment j'apprends le mieux")</li>
+                        </ul>
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✗ Ce qui manque :</h5>
+                        <ul class="non">
+                            <li>Vous n'intégrez pas encore ce savoir dans une vision systémique de votre pratique future</li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple">
+                        <strong>📌 Exemple</strong>
+                        "Au lycée, mon idée était qu'être 'intelligent' c'était avoir une bonne mémoire. L'anatomie m'a confronté(e) à mes limites : je ne pouvais pas mémoriser une structure en 2D et la visualiser en 3D en même temps. C'a été difficile émotionnellement—je me sentais 'bête'. Puis j'ai découvert que parler de l'anatomie à un camarade me permettait de construire cette visualisation mentale. Cela m'a libéré(e) : j'ai compris que 'être intelligent' n'avait rien à voir avec la mémorisation—c'était comment je CONSTRUISAIS ma compréhension. Cela change complètement ma vision de l'apprentissage."
+                    </div>
+
+                    <div class="curseur">
+                        ➜ Vous êtes à ce niveau si vous explorez vraiment votre transformation, vous comprenez vos croyances et comment elles changent.
+                    </div>
+                </div>
+
+                <!-- NIVEAU 4 -->
+                <div class="niveau">
+                    <div class="niveau-titre">
+                        <div class="niveau-numero">4</div>
+                        <h4>INTÉGRATION / EXPERTISE</h4>
+                    </div>
+                    <div class="niveau-subtitle">Vous maîtrisez : vous intégrez cette expérience dans votre vision globale de qui vous êtes comme futur praticien.</div>
+                    
+                    <div class="niveau-definition">
+                        <strong>Définition</strong>
+                        Vous ne décrivez plus juste votre transformation personnelle—vous montrez comment cette expérience d'apprentissage s'intègre dans une compréhension plus large de votre futur métier. Vous reconnaissez que comprendre COMMENT vous apprenez est une <strong>compétence fondamentale pour devenir un bon ostéopathe</strong>.
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✓ Vous êtes à ce niveau si :</h5>
+                        <ul>
+                            <li>Vous intégrez l'expérience dans plusieurs domaines (anatomie, physiologie, autres matières)</li>
+                            <li>Vous reliez ce savoir à votre futur métier ("En tant qu'ostéopathe, je devrai adapter ma façon de penser à chaque patient")</li>
+                            <li>Vous reconnaissez que <strong>l'adaptabilité est une compétence clé</strong></li>
+                            <li>Vous projetez cette prise de conscience dans votre pratique future ("Je sais que je devrai toujours remettre en question mes méthodes")</li>
+                            <li>Vous voyez l'importance de la <strong>réflexivité</strong> : apprendre à apprendre est un apprentissage en soi</li>
+                            <li>Vous commencez à envisager comment cette flexibilité cognitive vous servira face à des patients complexes</li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple">
+                        <strong>📌 Exemple</strong>
+                        "Cette année, j'ai appris que 'apprendre' n'est pas juste absorber de l'information—c'est CONSTRUIRE ma propre compréhension selon mon style. J'ai découvert que je pense mieux en parlant, en visualisant, en créant des schémas. Cette flexibilité d'apprentissage me servira tout au long de mes études. Et surtout, je réalise que cela prépare mon futur métier : en tant qu'ostéopathe, je devrai adapter ma compréhension à chaque patient, à ses particularités. Si je sais déjà comment JE peux changer ma façon de penser, je serai mieux équipé(e) pour aider les patients à changer leur rapport à leur corps. L'apprentissage réflexif n'est pas juste une compétence académique—c'est une compétence clinique."
+                    </div>
+
+                    <div class="curseur">
+                        ➜ Vous êtes à ce niveau si vous montrez une intégration systémique : vous reliez votre expérience d'apprentissage à votre identité de futur praticien.
+                    </div>
+                </div>
+            </div>
+
+            <!-- DOMAINE 2 -->
+            <div class="domaine">
+                <div class="domaine-header">
+                    <div class="domaine-icon">💫</div>
+                    <h2>Domaine 2 : Perception & Émotions</h2>
+                </div>
+
+                <div class="questions">
+                    <h4>❓ Questions de guidage</h4>
+                    <ol>
+                        <li>Lors d'un TP de palpation ou de l'observation d'une consultation, quelle émotion dominante (frustration de ne rien sentir, surprise, appréhension) as-tu ressentie ?</li>
+                        <li>Comment cette émotion s'est-elle traduite physiquement (tension dans tes mains, perte de concentration) ?</li>
+                        <li>Qu'as-tu compris sur le lien direct entre ton état de stress et ta capacité à percevoir ou à être attentif ?</li>
+                        <li>Quel "truc" ou ancrage as-tu testé pour te détendre et te reconnecter à l'exercice ?</li>
+                        <li>Comment comptes-tu utiliser cette prise de conscience pour tes futurs TP d'anatomie palpatoire ?</li>
+                    </ol>
+                </div>
+
+                <!-- NIVEAU 1 -->
+                <div class="niveau">
+                    <div class="niveau-titre">
+                        <div class="niveau-numero">1</div>
+                        <h4>RÉCIT DESCRIPTIF</h4>
+                    </div>
+                    <div class="niveau-subtitle">Vous rapportez l'expérience sans vraiment explorer le lien corps-émotion-perception.</div>
+                    
+                    <div class="niveau-definition">
+                        <strong>Définition</strong>
+                        Vous décrivez l'émotion (frustration, stress, appréhension) et peut-être ses manifestations physiques, mais vous ne connectez pas vraiment ces éléments à votre capacité perceptive. Vous restez à la surface du vécu.
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✓ Vous êtes à ce niveau si :</h5>
+                        <ul>
+                            <li>Vous nommez l'émotion ("J'étais frustré(e)", "J'avais peur")</li>
+                            <li>Vous décrivez une manifestation physique ("Mes mains tremblaient")</li>
+                            <li>Vous mentionnez un événement spécifique en TP ou observation</li>
+                        </ul>
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✗ Ce qui manque :</h5>
+                        <ul class="non">
+                            <li>Vous ne reliez pas l'émotion à la QUALITÉ de votre perception</li>
+                            <li>Vous n'explorez pas comment cette émotion vous a bloqué(e)</li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple">
+                        <strong>📌 Exemple</strong>
+                        "En TP de palpation, j'étais frustré(e) de ne rien sentir. Mes mains étaient tendues. J'ai essayé de respirer plus et c'était mieux."
+                    </div>
+
+                    <div class="curseur">
+                        ➜ Vous êtes à ce niveau si vous décrivez l'émotion et une tentative de détente, mais sans vraie compréhension du lien.
+                    </div>
+                </div>
+
+                <!-- NIVEAU 2 -->
+                <div class="niveau">
+                    <div class="niveau-titre">
+                        <div class="niveau-numero">2</div>
+                        <h4>CONSTAT / BILAN</h4>
+                    </div>
+                    <div class="niveau-subtitle">Vous observez le lien entre émotion et perception ; vous mesurez l'impact.</div>
+                    
+                    <div class="niveau-definition">
+                        <strong>Définition</strong>
+                        Vous commencez à voir que votre <strong>état émotionnel affecte directement votre capacité à percevoir</strong>. Vous mesurez comment le calme ou le stress change la qualité de votre palpation.
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✓ Vous êtes à ce niveau si :</h5>
+                        <ul>
+                            <li>Vous établissez explicitement le lien : "Quand j'étais stressé(e), je ne sentais rien. Quand j'étais calme, je sentais mieux"</li>
+                            <li>Vous identifiez les manifestations physiques du stress (tension musculaire, respiration bloquée, concentration réduite)</li>
+                            <li>Vous reconnaissez que l'émotion était une <strong>barrière à la perception</strong></li>
+                            <li>Vous mesurez l'amélioration après avoir essayé une stratégie</li>
+                        </ul>
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✗ Ce qui manque :</h5>
+                        <ul class="non">
+                            <li>Vous ne comprenez pas encore POURQUOI ce lien existe</li>
+                            <li>Vous ne voyez pas encore l'implication pour votre futur métier</li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple">
+                        <strong>📌 Exemple</strong>
+                        "En TP, quand j'étais stressé(e), mon corps était tendu et je ne sentais rien sous mes mains. Quand j'ai appris à respirer profondément avant de commencer, mes mains se sont détendues et j'ai commencé à vraiment percevoir les structures. J'ai mesuré cette différence clairement : le stress bloquait ma perception."
+                    </div>
+
+                    <div class="curseur">
+                        ➜ Vous êtes à ce niveau si vous voyez le lien émotion-perception et vous le mesurez concrètement.
+                    </div>
+                </div>
+
+                <!-- NIVEAU 3 -->
+                <div class="niveau">
+                    <div class="niveau-titre">
+                        <div class="niveau-numero">3</div>
+                        <h4>ANALYSE TRANSFORMATRICE</h4>
+                    </div>
+                    <div class="niveau-subtitle">Vous comprenez les mécanismes : pourquoi l'émotion affecte la perception, et ce que cela révèle de vous.</div>
+                    
+                    <div class="niveau-definition">
+                        <strong>Définition</strong>
+                        Vous n'observez plus juste le lien—vous le comprenez. Vous explorez <strong>pourquoi</strong> votre stress bloque votre perception (système nerveux, tension musculaire, focalisation mentale), et vous découvrez ce que vos émotions révèlent sur vous.
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✓ Vous êtes à ce niveau si :</h5>
+                        <ul>
+                            <li>Vous comprenez les mécanismes : "Quand je suis stressé(e), mon corps se contracte et mes mains deviennent insensibles"</li>
+                            <li>Vous explorez l'origine de votre stress ("J'avais peur de faire faux", "J'avais peur de paraître incompétent(e)")</li>
+                            <li>Vous reliez ces peurs à vos croyances ("J'associais l'erreur à l'incompétence")</li>
+                            <li>Vous testez des stratégies et vous explorez ce qui marche POUR VOUS ("La respiration marche, la visualisation marche")</li>
+                            <li>Vous découvrez qu'<strong>les émotions ne sont pas des ennemies—elles sont des informations</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✗ Ce qui manque :</h5>
+                        <ul class="non">
+                            <li>Vous n'intégrez pas encore cette compréhension dans votre vision du futur métier</li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple">
+                        <strong>📌 Exemple</strong>
+                        "J'ai découvert que ma frustration en TP venait d'une croyance : 'si je ne sens rien tout de suite, c'est que je suis nul(le)'. Cette croyance créait du stress, qui contractait mon corps, qui rendait mes mains insensibles. C'était un cercle vicieux. Quand j'ai compris ce mécanisme, j'ai eu moins peur de ne rien sentir au début. J'ai testé la respiration abdominale et ça a marché : mon corps se détendait, mes mains se relaxaient, et je commençais à percevoir. J'ai aussi essayé la visualisation mentale avant de toucher, et c'était encore mieux. Je réalise maintenant que mon stress n'était pas une faiblesse—c'était mon système nerveux qui me disait 'tu as des croyances limitantes à explorer'."
+                    </div>
+
+                    <div class="curseur">
+                        ➜ Vous êtes à ce niveau si vous explorez vraiment les mécanismes et ce que vos émotions vous révèlent.
+                    </div>
+                </div>
+
+                <!-- NIVEAU 4 -->
+                <div class="niveau">
+                    <div class="niveau-titre">
+                        <div class="niveau-numero">4</div>
+                        <h4>INTÉGRATION / EXPERTISE</h4>
+                    </div>
+                    <div class="niveau-subtitle">Vous maîtrisez : vous intégrez cette compréhension dans votre identité de futur praticien.</div>
+                    
+                    <div class="niveau-definition">
+                        <strong>Définition</strong>
+                        Vous montrez que <strong>transformer l'émotion en ressource est une compétence clinique fondamentale</strong>. Vous projetez cette prise de conscience dans votre futur métier : comprendre vos propres émotions vous permettra de mieux comprendre (et d'aider) les patients.
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✓ Vous êtes à ce niveau si :</h5>
+                        <ul>
+                            <li>Vous reliez la gestion de vos émotions à votre capacité perceptive</li>
+                            <li>Vous voyez que <strong>cette compétence est transférable aux patients</strong> ("Si je sais gérer mon stress, je saurai aider les patients à gérer le leur")</li>
+                            <li>Vous projetez dans le futur métier : "Un bon ostéopathe doit être régulé(e) émotionnellement pour percevoir correctement"</li>
+                            <li>Vous comprenez que <strong>l'empathie envers soi-même prépare l'empathie envers les patients</strong></li>
+                            <li>Vous voyez que vos émotions en TP sont une <strong>préparation à la complexité émotionnelle de la clinique</strong></li>
+                            <li>Vous reconnaissez que la gestion émotionnelle est une <strong>compétence professionnelle</strong>, pas juste personnelle</li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple">
+                        <strong>📌 Exemple</strong>
+                        "Cette année, j'ai compris que gérer mes émotions en TP n'est pas juste pour 'réussir le TP'—c'est une préparation à mon futur métier. Un ostéopathe qui est contracté(e), stressé(e), anxieux(se), ne peut pas vraiment percevoir ni vraiment aider le patient. En apprenant à reconnaître mon stress, à le transformer en vigilance plutôt qu'en paralysie, je développe une compétence clinique réelle. En A2 et A3, je devrai faire face à des patients qui ont leurs propres émotions—des gens anxieux, en douleur, méfiants. Si je sais déjà transformer MES émotions en ressource, je serai mieux équipé(e) pour tenir une présence calme et rassurante face à ces patients. C'est pas juste de la gestion personnelle—c'est une compétence fondamentale du métier."
+                    </div>
+
+                    <div class="curseur">
+                        ➜ Vous êtes à ce niveau si vous montrez que la gestion émotionnelle est une compétence clinique transférable au métier.
+                    </div>
+                </div>
+            </div>
+
+            <!-- DOMAINE 3 -->
+            <div class="domaine">
+                <div class="domaine-header">
+                    <div class="domaine-icon">👤</div>
+                    <h2>Domaine 3 : Identité professionnelle & Posture</h2>
+                </div>
+
+                <div class="questions">
+                    <h4>❓ Questions de guidage</h4>
+                    <ol>
+                        <li>Quelle était ton idée préconçue du métier d'ostéopathe avant de rentrer à l'école ?</li>
+                        <li>Quel événement (une discussion avec un prof, une observation en stage) est venu contredire cette vision initiale ?</li>
+                        <li>Pourquoi cette ancienne représentation était-elle incomplète ou erronée ?</li>
+                        <li>Comment définis-tu le métier aujourd'hui avec tes propres mots ?</li>
+                        <li>Quelles sont les limites de la profession que tu commences déjà à entrevoir ?</li>
+                    </ol>
+                </div>
+
+                <!-- NIVEAU 1 -->
+                <div class="niveau">
+                    <div class="niveau-titre">
+                        <div class="niveau-numero">1</div>
+                        <h4>RÉCIT DESCRIPTIF</h4>
+                    </div>
+                    <div class="niveau-subtitle">Vous racontez ce que vous pensiez avant et ce que vous pensez maintenant, sans vraiment explorer.</div>
+                    
+                    <div class="niveau-definition">
+                        <strong>Définition</strong>
+                        Vous décrivez votre vision initiale du métier et un événement qui l'a contredite, mais vous ne creusez pas vraiment pourquoi votre vision était incomplète ou ce que cela signifie pour vous.
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✓ Vous êtes à ce niveau si :</h5>
+                        <ul>
+                            <li>Vous nommez votre idée initiale ("Je pensais que les ostéopathes faisaient craquer le dos")</li>
+                            <li>Vous décrivez un événement qui a changé cette vision ("Un prof a dit que ce n'était pas que du craquement")</li>
+                            <li>Vous donnez une nouvelle définition ("Maintenant je comprends que c'est plus complexe")</li>
+                        </ul>
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✗ Ce qui manque :</h5>
+                        <ul class="non">
+                            <li>Vous n'explorez pas pourquoi votre vision était naïve ou incomplète</li>
+                            <li>Vous ne questionnez pas les limites du métier</li>
+                            <li>Vous ne reliez pas ce changement à votre identité professionnelle</li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple">
+                        <strong>📌 Exemple</strong>
+                        "Avant l'école, je pensais que les ostéopathes faisaient surtout des manipulations qui craquaient. J'ai observé un tuteur et il ne faisait pas craquer. Maintenant je sais que c'est plus que ça."
+                    </div>
+
+                    <div class="curseur">
+                        ➜ Vous êtes à ce niveau si vous décrivez la transformation mais sans vraie réflexion.
+                    </div>
+                </div>
+
+                <!-- NIVEAU 2 -->
+                <div class="niveau">
+                    <div class="niveau-titre">
+                        <div class="niveau-numero">2</div>
+                        <h4>CONSTAT / BILAN</h4>
+                    </div>
+                    <div class="niveau-subtitle">Vous voyez l'écart entre votre vision initiale et la réalité ; vous mesurez votre transformation identitaire.</div>
+                    
+                    <div class="niveau-definition">
+                        <strong>Définition</strong>
+                        Vous identifiez explicitement <strong>ce qui était faux dans votre vision initiale</strong> et comment votre compréhension du métier a évolué. Vous commencez à reconnaître les <strong>limites réelles</strong> de la profession.
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✓ Vous êtes à ce niveau si :</h5>
+                        <ul>
+                            <li>Vous identifiez ce qui manquait dans votre vision initiale ("Je n'avais pas conscience de la dimension relationnelle", "Je pensais que c'était juste physique")</li>
+                            <li>Vous mesurez l'écart : avant vs. maintenant</li>
+                            <li>Vous donnez une nouvelle définition plus nuancée</li>
+                            <li>Vous commencez à reconnaître les limites ("J'ai réalisé qu'on ne peut pas traiter certaines choses")</li>
+                            <li>Vous mesurez votre propre transformation ("Maintenant je me vois différemment dans ce métier")</li>
+                        </ul>
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✗ Ce qui manque :</h5>
+                        <ul class="non">
+                            <li>Vous ne questionnez pas encore vraiment vos propres croyances fondamentales</li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple">
+                        <strong>📌 Exemple</strong>
+                        "Avant, je pensais que l'ostéopathie c'était juste des manipulations physiques. J'ai découvert que c'était aussi une relation humaine—que le patient a besoin de se sentir écouté(e) et respecté(e). J'ai aussi remarqué qu'un ostéopathe ne peut pas tout traiter : si un patient a un cancer, on ne peut pas le soigner. Je comprends maintenant que le métier a des limites importantes, et que c'est ok."
+                    </div>
+
+                    <div class="curseur">
+                        ➜ Vous êtes à ce niveau si vous avez une bonne compréhension du changement de votre vision et des limites du métier.
+                    </div>
+                </div>
+
+                <!-- NIVEAU 3 -->
+                <div class="niveau">
+                    <div class="niveau-titre">
+                        <div class="niveau-numero">3</div>
+                        <h4>ANALYSE TRANSFORMATRICE</h4>
+                    </div>
+                    <div class="niveau-subtitle">Vous explorez les croyances sous-jacentes : pourquoi vous aviez cette vision, et ce que sa transformation signifie pour vous.</div>
+                    
+                    <div class="niveau-definition">
+                        <strong>Définition</strong>
+                        Vous ne mesurez plus juste le changement—vous explorez <strong>pourquoi vous aviez cette vision naïve au départ</strong> (d'où venait-elle ? Quelles croyances la sous-tendaient ?), et ce que l'acceptation des limites du métier révèle sur votre propre maturité.
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✓ Vous êtes à ce niveau si :</h5>
+                        <ul>
+                            <li>Vous explorez l'origine de votre vision ("Je pensais ça parce que j'avais vu des vidéos de manipulations sur YouTube")</li>
+                            <li>Vous comprenez que vous aviez des croyances limitantes ("Je pensais que la 'vraie' ostéopathie était spectaculaire et immédiate")</li>
+                            <li>Vous explorez ce qui vous attire VRAIMENT dans le métier au-delà de l'image ("Ce qui m'attire, ce n'est pas faire craquer—c'est aider les gens à bouger sans douleur")</li>
+                            <li>Vous reconnaissez les limites avec humilité ("Je comprends maintenant qu'être un bon ostéopathe signifie aussi reconnaître quand je ne peux pas aider")</li>
+                            <li>Vous voyez comment cette acceptation des limites vous rend plus honnête professionnellement</li>
+                        </ul>
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✗ Ce qui manque :</h5>
+                        <ul class="non">
+                            <li>Vous ne projetez pas encore comment cette vision affectera votre pratique future</li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple">
+                        <strong>📌 Exemple</strong>
+                        "En relisant les raisons pour lesquelles j'ai choisi l'ostéopathie, je réalise que j'étais fasciné(e) par l'IMAGE du praticien qui 'répare les gens' instantanément. C'était un fantasme d'omnipotence. Cette année, j'ai découvert que l'ostéopathie était bien plus humble : on ne guérit pas, on facilite la capacité d'auto-guérison du corps. Et qu'il y a des choses qu'on ne peut absolument pas traiter. Au début, c'a été désillusionnant. Mais maintenant je me rends compte que c'est en acceptant ces limites que le métier devient vraiment honnête et respectueux des patients. Je commence à me voir comme un praticien humble plutôt que comme un 'guérisseur miracle'."
+                    </div>
+
+                    <div class="curseur">
+                        ➜ Vous êtes à ce niveau si vous explorez vraiment vos propres croyances et comment les accepter transforme votre identité.
+                    </div>
+                </div>
+
+                <!-- NIVEAU 4 -->
+                <div class="niveau">
+                    <div class="niveau-titre">
+                        <div class="niveau-numero">4</div>
+                        <h4>INTÉGRATION / EXPERTISE</h4>
+                    </div>
+                    <div class="niveau-subtitle">Vous maîtrisez : vous intégrez cette vision nuancée et humble dans votre identité de futur praticien.</div>
+                    
+                    <div class="niveau-definition">
+                        <strong>Définition</strong>
+                        Vous montrez que <strong>accepter la complexité et les limites du métier est une marque de maturité professionnelle</strong>. Vous projetez cette vision humble et réaliste dans votre futur métier, et vous commencez à envisager comment cette honnêteté enrichira votre pratique.
+                    </div>
+
+                    <div class="indicateurs">
+                        <h5>✓ Vous êtes à ce niveau si :</h5>
+                        <ul>
+                            <li>Vous montrez une vision nuancée : ostéopathie = relation + technique + humilité + limites</li>
+                            <li>Vous reliez cette vision aux responsabilités éthiques du métier ("Un bon ostéopathe doit être honnête sur ce qu'il peut et ne peut pas faire")</li>
+                            <li>Vous projetez : "Je serai un ostéopathe qui reconnaît les limites de son art"</li>
+                            <li>Vous voyez que cette <strong>honnêteté renforcera la confiance des patients</strong> ("Les patients apprécient les praticiens honnêtes")</li>
+                            <li>Vous reconnaissez que continuer à apprendre (pour explorer les limites) est fondamental</li>
+                            <li>Vous commencez à définir <strong>vos propres valeurs professionnelles</strong> au-delà de l'image</li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple">
+                        <strong>📌 Exemple</strong>
+                        "Cette année, j'ai construit une vision beaucoup plus mature du métier. L'ostéopathie n'est pas 'guérir'—c'est 'créer les conditions pour que le corps se guérisse'. C'est humble, c'est scientifique, c'est respectueux. J'ai aussi appris que le métier a des limites claires : on ne traite pas les cancers, les infections graves, etc. Et c'est OK. Cela signifie qu'un bon ostéopathe doit d'abord savoir quand NE PAS traiter. Je pense que c'est cette honnêteté qui rendra mon futur métier vraiment professionnel. Les patients qui viennent me voir apprécieront que je leur dise 'voilà ce que je peux faire, voilà ce que je ne peux pas faire' plutôt que de prétendre à l'omnipotence. Et cette vision m'aide déjà à forger mon identité : je ne veux pas être 'le praticien qui répare tout'—je veux être 'le praticien honnête, consciencieux et humble qui aide dans le cadre de ses compétences'."
+                    </div>
+
+                    <div class="curseur">
+                        ➜ Vous êtes à ce niveau si vous montrez une intégration systémique : une vision humble, éthique et réaliste du métier, ancrée dans vos valeurs professionnelles.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <p><strong>📖 Comment utiliser ce document</strong></p>
+            <p>Pour chaque domaine, répondez aux 5 questions de guidage. Ensuite, lisez les 4 niveaux d'autoévaluation et positionnez-vous honnêtement. Vous ne serez pas au même niveau dans tous les domaines—c'est normal en A1 ! L'important, c'est de comprendre où vous êtes et où vous pouvez progresser.</p>
+            <p style="margin-top: 20px; font-size: 0.9em; color: #999;">Portfolio A1 — Formation Ostéopathie | Année 1 : L'Éveil</p>
+        </div>
+    </div>
+</body>
+</html>
